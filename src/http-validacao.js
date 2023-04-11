@@ -1,3 +1,4 @@
+import chalk from "chalk";
 import fetch from "node-fetch";
 
 function extraiLinks(arrLinks) {
@@ -14,25 +15,16 @@ function manejaErros(erro) {
   }
 }
 
-export default function checaStatus(listaLinks) {
+ function checaStatus(listaLinks) {
   return Promise.all(
     listaLinks.map((link) => {
       return fetch(link.href)
-        .then((response) => ({ ...link, status: response.status, ok: response.ok ? 'ok' : 'fail' }))
-        .catch((erro) => ({ ...link, ok: manejaErros(erro) }));
+      .then((response) => ({ ...link, status: response.status, ok:
+        response.ok ? true : false }))
+
+        .catch((erro) => ({ ...link, ok: false, status: manejaErros(erro) }));
     })
   );
 }
 
-
-function listaValidada(listaDeLinks) {
-  const links = extraiLinks(listaDeLinks);
-  return checaStatus(links).then((status) =>
-    listaDeLinks.map((objeto, indice) => ({
-      ...objeto,
-      status: status[indice],
-    }))
-  );
-}
-
-// export default { checaStatus, listaValidada }
+export { checaStatus, manejaErros }

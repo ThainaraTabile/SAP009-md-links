@@ -1,7 +1,7 @@
 
 import fs from 'fs';
 import chalk from 'chalk';
-import checaStatus from './http-validacao.js'
+import { checaStatus } from './http-validacao.js'
 import calculaStats from './calcula-stats.js';
 
 function trataErro(erro) {
@@ -21,7 +21,7 @@ function extrairLinksDoArquivo(caminhoDoArquivo) {
         text: captura[1],
         file: caminhoDoArquivo
       }));
-
+      
       return resultados;
     })
     .catch(erro => trataErro(erro));
@@ -64,10 +64,12 @@ function mdLinks(path, options) {
         return links
 
       })
-  }
+  } 
+} 
 
-  // return extrairLinksDoDiretorio(path).then(links => links)
-}
+
+
 
 
 export default mdLinks; 
+
