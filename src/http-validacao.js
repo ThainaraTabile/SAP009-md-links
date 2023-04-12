@@ -1,19 +1,11 @@
-import chalk from "chalk";
+
 import fetch from "node-fetch";
+import {manejaErros} from "./exibe-erros.js";
 
 function extraiLinks(arrLinks) {
   return arrLinks.map((objetoLink) => Object.values(objetoLink).join());
 }
 
-
-
-function manejaErros(erro) {
-  if (erro.code === "ENOTFOUND") {
-    return "link não encontrado";
-  } else {
-    return "ocorreu algum erro";
-  }
-}
 
  function checaStatus(listaLinks) {
   return Promise.all(
@@ -27,4 +19,4 @@ function manejaErros(erro) {
   );
 }
 
-export { checaStatus, manejaErros }
+export { checaStatus}
