@@ -6,11 +6,11 @@ function trataErro(erro) {
   }
 
   function erroNaExtensao(arquivo) {
-    console.log( chalk.red(` \n O arquivo/diretório '${arquivo}' não é formato markdown.`));
+    console.log( chalk.hex('#FB80A7')(` \n O arquivo encontrado em '${chalk.hex('#FA3473').underline(arquivo)}' não é formato markdown. \n`));
   }
   
   function semLinksEncontrados() {
-   console.log( chalk.magentaBright(`
+   console.log( chalk.hex('#FB69C3')(`
       ╭───────────────────────────────────────────╮
       │ Não encontramos nenhum link neste arquivo!│
       ╰───────────────────────────────────────────╯ \n`));
