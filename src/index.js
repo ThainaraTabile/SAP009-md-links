@@ -37,16 +37,9 @@ function mdLinks(path, options) {
         }
         if (options.validate) {
           return checaStatus(links).then(validatedLinks => {
-            if(options.stats) {
-              return calculaStats(validatedLinks)
-            }
 
             return validatedLinks;
           })
-        }
-
-        if (options.stats) {
-            return calculaStats(links)
         }
 
         return links;
