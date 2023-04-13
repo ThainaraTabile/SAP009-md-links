@@ -12,5 +12,5 @@ export default function calculaStats (links) {
         stats.broken = broken
     }
 
-    return stats
+    return stats;
 }

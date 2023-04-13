@@ -3,6 +3,7 @@
 import chalk from "chalk";
 import mdLinks from "../src/index.js";
 import { semLinksEncontrados, erroNaExtensao } from "./exibe-erros.js";
+import calculaStats from "../src/calcula-stats.js";
 
 
 function imprimeLista(resultado) {
@@ -13,7 +14,7 @@ function imprimeLista(resultado) {
 
     console.log(chalk.hex('#4BFAF4')('\n',
         `   ╔══════════════════════╗
-    ║ Lista de links 🔍📄  ║
+    ║ Lista de links \ud83d\udd0d \ud83d\udcc4  ║
     ╚══════════════════════╝`),
         '\n\n', lista);
 }
@@ -26,10 +27,30 @@ function imprimeListaValidada(resultado) {
 
     console.log(chalk.hex('#4BFAF4')('\n',
         `   ╔══════════════════════╗
-    ║ Lista de links 🔍📄  ║
+    ║ Lista de links \ud83d\udd0d \ud83d\udcc4 ║
     ╚══════════════════════╝`),
         '\n\n', lista);
 }
+
+
+function imprimeCalculoStats(links) {
+    const stats = calculaStats(links);
+    let output = '';
+  
+    output += chalk.hex('#F56327')('\n',
+      `     ╔═════════════════════════════╗
+      ║ Estatísticas dos Links \ud83d\udcca   ║
+      ╚═════════════════════════════╝`);
+  
+    output += `\n\n${chalk.hex('#FA956F')('Total de links:')} ${chalk.yellow(stats.total)}`;
+    output += `\n${chalk.hex('#FA956F')('Links únicos:')} ${chalk.yellow(stats.unique)}`;
+  
+    if (stats.broken) {
+      output += `\n${chalk.bold('Links quebrados:')} ${chalk.red(stats.broken)}`;
+    }
+  
+    console.log(output);
+  }
 
 const caminho = process.argv[2];
 const validate = process.argv.some(argumento => argumento === '--validate');
@@ -42,11 +63,16 @@ const options = {
 
 mdLinks(caminho, options)
     .then((resultado) => {
+        if (options.stats) {
+            imprimeCalculoStats(resultado)
+            return
+        }
+
         if (options.validate) {
             return imprimeListaValidada(resultado)
-        } else {
-            imprimeLista(resultado);
         }
+
+        imprimeLista(resultado);
 
     })
     .catch((err) => {
@@ -61,5 +87,5 @@ mdLinks(caminho, options)
                 console.log(err)
         }
     });
- 
+
 
