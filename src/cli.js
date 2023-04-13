@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import chalk from "chalk";
 import mdLinks from "../src/index.js";
 import { semLinksEncontrados, erroNaExtensao } from "./exibe-erros.js";
@@ -9,7 +11,7 @@ function imprimeLista(resultado) {
         return linha;
     }).join('\n\n');
 
-    console.log(chalk.yellow('\n',
+    console.log(chalk.hex('#4BFAF4')('\n',
         `   ╔══════════════════════╗
     ║ Lista de links 🔍📄  ║
     ╚══════════════════════╝`),
@@ -22,7 +24,7 @@ function imprimeListaValidada(resultado) {
         return linha;
     }).join('\n\n');
 
-    console.log(chalk.yellow('\n',
+    console.log(chalk.hex('#4BFAF4')('\n',
         `   ╔══════════════════════╗
     ║ Lista de links 🔍📄  ║
     ╚══════════════════════╝`),
@@ -59,5 +61,5 @@ mdLinks(caminho, options)
                 console.log(err)
         }
     });
-    //.catch((err) => (manejaErros(err) ));
+ 
 

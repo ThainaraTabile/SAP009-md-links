@@ -1,11 +1,15 @@
 {
-  "name": "md-links",
+  "name": "md-links-lab",
   "version": "0.1.0",
-  "description": "",
+  "author": "Thainara Tabile Benevides",
+  "description": "Projeto 4 da Laboratória - Md Links",
   "main": "index.js",
   "type": "module",
   "engines": {
     "node": ">=16.x"
+  },
+  "bin": {
+    "md-links": "./src/cli.js"
   },
   "bootcamp": {
     "createdAt": "2023-03-30T13:20:37.337Z",
