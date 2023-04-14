@@ -18,11 +18,12 @@
   },
   "scripts": {
     "build": "",
-    "pretest": "npm run eslin",
+    "pretest": "npm run eslint",
     "test": "jest --verbose --coverage",
     "cli": "node ./src/cli.js ./arquivos/texto.md",
     "cli:valida": "node ./src/cli.js ./arquivos/texto.md --valida",
-    "eslint": "eslint --fix --ext .js test/"
+    "type": "module",
+    "eslint": "eslint --fix --ext .js src/"
   },
   "dependencies": {
     "chalk": "5.2.0",

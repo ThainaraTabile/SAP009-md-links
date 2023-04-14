@@ -1,27 +1,22 @@
 import fs from 'fs';
-//import chalk from 'chalk';
-import { checaStatus } from './http-validacao.js'
-import calculaStats from './calcula-stats.js';
-import {trataErro} from './exibe-erros.js';
-
-
+import { checaStatus } from './http-validacao.js';
+import { trataErro } from './exibe-erros.js';
 
 function extrairLinksDoArquivo(caminhoDoArquivo) {
   const enconding = 'utf-8';
   const regex = /\[([^[\]]*?)\]\((https?:\/\/[^\s?#.].[^\s]*)\)/gm;
 
   return fs.promises.readFile(caminhoDoArquivo, enconding)
-    .then(texto => {
+    .then((texto) => {
       const capturas = [...texto.matchAll(regex)];
-      const resultados = capturas.map(captura => ({
+      const resultados = capturas.map((captura) => ({
         href: captura[2],
         text: captura[1],
-        file: caminhoDoArquivo
+        file: caminhoDoArquivo,
       }));
       return resultados;
-      
     })
-    .catch(erro => trataErro(erro));
+    .catch((erro) => trataErro(erro));
 }
 
 function mdLinks(path, options) {
@@ -31,23 +26,17 @@ function mdLinks(path, options) {
   }
   if (fs.lstatSync(path).isFile()) {
     return extrairLinksDoArquivo(path)
-      .then(links => {
-        if(links.length === 0){
-          return Promise.reject(new Error('arquivo-sem-link'))
+      .then((links) => {
+        if (links.length === 0) {
+          return Promise.reject(new Error('arquivo-sem-link'));
         }
         if (options.validate) {
-          return checaStatus(links).then(validatedLinks => {
-
-            return validatedLinks;
-          })
+          return checaStatus(links).then((validatedLinks) => validatedLinks);
         }
 
         return links;
-      
+      });
+  }
+}
 
-      }) 
-  } 
-} 
-
-
-export default mdLinks;
+export { mdLinks, extrairLinksDoArquivo };

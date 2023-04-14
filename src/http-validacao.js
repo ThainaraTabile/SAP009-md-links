@@ -1,22 +1,18 @@
+import fetch from 'node-fetch';
+import { manejaErros } from './exibe-erros.js';
 
-import fetch from "node-fetch";
-import {manejaErros} from "./exibe-erros.js";
-
-function extraiLinks(arrLinks) {
-  return arrLinks.map((objetoLink) => Object.values(objetoLink).join());
-}
-
-
- function checaStatus(listaLinks) {
+function checaStatus(listaLinks) {
   return Promise.all(
-    listaLinks.map((link) => {
-      return fetch(link.href)
-      .then((response) => ({ ...link, status: response.status, ok:
-        response.ok ? true : false }))
+    listaLinks.map((link) => fetch(link.href)
+      .then((response) => ({
+        ...link,
+        status: response.status,
+        ok:
+        !!response.ok,
+      }))
 
-        .catch((erro) => ({ ...link, ok: false, status: manejaErros(erro) }));
-    })
+      .catch((erro) => ({ ...link, ok: false, status: manejaErros(erro) }))),
   );
 }
 
-export { checaStatus}
+export { checaStatus };

@@ -6,6 +6,7 @@
   //specificar as opções de análise de código-fonte, e neste caso, { "ecmaVersion": 8 } 
   //indica que o código-fonte será analisado com suporte para a versão 8 do ECMAScript (que corresponde ao ES2017)
   "parserOptions": {
-    "ecmaVersion": 8
+    "ecmaVersion": 9,
+    "sourceType": "module"
   }
 }
