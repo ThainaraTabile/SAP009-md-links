@@ -44,4 +44,4 @@ function mdLinks(path, options) {
   }
 }
 
-export { mdLinks, extrairLinksDoArquivo };
+export { mdLinks };

@@ -1,15 +1,7 @@
-// import mdLinks from './index.js';
 
-// describe('mdLinks', () => {
-//   it('deve retornar os links de um arquivo formato md', (links) => {
-//     mdLinks ('diretorio/exemplo.md').then((resultado) => {
-//       expect(resultado.length).toBe(1)
-//     })
-//     links()
-//   });
-// });
 
-import { mdLinks } from '../src/md-links.js'; 
+import { mdLinks} from '../src/md-links.js'; 
+import fs from 'fs';
 
 describe('mdLinks', () => {
   describe('quando a extensão do arquivo é inválida', () => {
@@ -19,32 +11,59 @@ describe('mdLinks', () => {
       const resultado = mdLinks(path, options);
 
       return resultado.catch((erro) => {
-        expect(erro).to.be.an.instanceof(Error);
-        expect(erro.message).to.equal('extencao-invalida');
+        expect(erro.message).toEqual('extencao-invalida');
       });
     });
   });
 
-  describe('quando o arquivo não contém links', () => {
+  describe('quando o arquivo ou diretório não existem', () => {
     it('deve rejeitar a promessa com uma mensagem de erro', () => {
+      const path = '../src/arquivo/teste.md';
+      const options = {};
+      const resultado = mdLinks(path,options);
+      return resultado.catch((erro) => {
+        expect(erro.message).toEqual('arquivo-inexistente');
+      });
     });
   });
 
-  describe('quando a opção "validate" é falsa', () => {
-    it('deve retornar os links do arquivo', () => {
+  describe('quando o arquivo fornecido não possui links', () => {
+    it('deve rejeitar a promessa com uma mensagem de erro', () => {
+      const path = './arquivos/texto-sem-link.md';
+      const options = {};
+      const resultado = mdLinks(path, options);
+          return resultado.catch((erro) => {
+            expect(erro.message).toEqual('arquivo-sem-link');
+          });
+        }
+      );
     });
-  });
 
-  describe('quando a opção "validate" é verdadeira', () => {
-    it('deve retornar os links do arquivo com a validação de status', () => {
+  // describe('quando o arquivo fornecido não possui links', () => {
+  //   it('deve rejeitar a promessa com uma mensagem de erro', () => {
+  //     const path = '../arquivos/texto-sem-link.md';
+  //     const resultado = mdLinks(path);
+  //     const options = {};
+  //     return resultado.catch((erro) => {
+  //       expect(erro.message).toContain('arquivo-sem-link');
+  //     });
+  //   });
+  // });
+  
+  describe('quando a opção "validate" é passada', () => {
+    it('deve retornar um array de objetos com os atributos "href", "text", e "status"', () => {
+      const path = './arquivos/texto.md';
+      const options = { validate: true };
+      return mdLinks(path, options).then((links) => {
+        expect(Array.isArray(links)).toBe(true);
+        expect(links.length).toBeGreaterThan(0);
+        links.forEach((link) => {
+          expect(link).toHaveProperty('href');
+          expect(link).toHaveProperty('text');
+          expect(link).toHaveProperty('status');
+        });
+      });
     });
   });
+  
 });
-
-// test('deve verificar se oa arquivo fornecido possui extensão md', () => {
-//   const textoEsperado = arquivo.md;
-//   const retornado = mdLinks(arquivo.js)
-
-//   expect(retornado).toBe(textoEsperado)
-// }
-// )
