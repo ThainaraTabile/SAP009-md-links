@@ -24,6 +24,11 @@ function mdLinks(path, options) {
   if (extensao !== 'md') {
     return Promise.reject(new Error('extencao-invalida'));
   }
+
+  if(!fs.existsSync(path)) {
+    return Promise.reject(new Error('arquivo-inexistente'));
+  }
+
   if (fs.lstatSync(path).isFile()) {
     return extrairLinksDoArquivo(path)
       .then((links) => {

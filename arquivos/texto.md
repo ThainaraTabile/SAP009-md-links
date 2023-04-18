@@ -20,9 +20,12 @@ As expressões regulares, ou regex, são uma ferramenta poderosa para manipulaç
 
 Para trabalhar com regex, é necessário conhecer a sintaxe e a utilização correta de cada uma das funções disponíveis. Para quem está começando, o [Medium](https://medium.com/xp-inc/regex-um-guia-pratico-para-express%C3%B5es-regulares-1ac5fa4dd39f) traz um guia prático para expressões regulares, com exemplos de utilização e explicações detalhadas. Além disso, o site [Regex101](https://regex101.com/) é uma ferramenta online que permite testar expressões regulares em tempo real e ajuda a entender como elas funcionam na prática.
 
+ [Cheerio](https://github.com/cheeriojs/cheerio)).
+
 ## Conclusão
 
 O Node.js é uma plataforma versátil e completa, capaz de oferecer diversas funcionalidades para o desenvolvimento de aplicações em JavaScript. Com o uso de módulos, Babel e regex, é possível otimizar o desenvolvimento e obter resultados mais eficientes e escaláveis. É fundamental estar sempre atualizado sobre essas tecnologias e conhecer as melhores práticas para utilizá-las de forma efetiva.
+[Teste de retorno 400](https://httpstat.us/404).
 [Teste de retorno 400](https://httpstat.us/404).
 [Teste de retorno 400](https://httpstat.us/404).
 [gatinho salsicha](https://gatinhosalsicha.com.br/)

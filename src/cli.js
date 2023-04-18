@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import chalk from 'chalk';
-import { mdLinks } from './index.js';
+import { mdLinks } from './md-links.js';
 import { semLinksEncontrados, erroNaExtensao } from './exibe-erros.js';
 import calculaStats from './calcula-stats.js';
 
@@ -43,23 +43,23 @@ function imprimeListaValidada(resultado) {
 
 function imprimeCalculoStats(links) {
   const stats = calculaStats(links);
-  let output = '';
+  let retorno = '';
 
-  output += chalk.hex('#F56327')(
+  retorno += chalk.hex('#F56327')(
     '\n',
     `     ╔═════════════════════════════╗
       ║ Estatísticas dos Links \ud83d\udcca   ║
       ╚═════════════════════════════╝`,
   );
 
-  output += `\n\n${chalk.hex('#FA956F')('Total de links:')} ${chalk.yellow(stats.total)}`;
-  output += `\n${chalk.hex('#FA956F')('Links únicos:')} ${chalk.yellow(stats.unique)}`;
+  retorno += `\n\n${chalk.hex('#FA956F')('Total de links:')} ${chalk.yellow(stats.total)}`;
+  retorno += `\n${chalk.hex('#FA956F')('Links únicos:')} ${chalk.yellow(stats.unique)}`;
 
   if (stats.broken) {
-    output += `\n${chalk.bold('Links quebrados:')} ${chalk.red(stats.broken)}`;
+    retorno += `\n${chalk.hex('#FA956F')('Links quebrados:')} ${chalk.red(stats.broken)}`;
   }
 
-  console.log(output);
+  console.log(retorno);
 }
 
 const caminho = process.argv[2];
@@ -91,6 +91,9 @@ mdLinks(caminho, options)
         break;
       case 'arquivo-sem-link':
         semLinksEncontrados();
+        break;
+      case 'arquivo-inexistente':
+        console.log('diretório ou arquivo inexistentes')
         break;
       default:
         console.log(err);
