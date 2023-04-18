@@ -16,15 +16,18 @@ function semLinksEncontrados() {
       ╰───────────────────────────────────────────╯ \n`));
 }
 
+function arquivoInexistente(arquivo) {
+  console.log(chalk.hex('#FB80A7')(` \n O arquivo/diretório que você está tentando acessar em '${chalk.hex('#FA3473').underline(arquivo)}' não existe. 
+  Por favor, verifique se você digitou corretamente o nome do arquivo/diretório e tente novamente. \n`));
+}
 function manejaErros(erro) {
   if (erro.code === 'ENOTFOUND') {
     return chalk.red('Link não encontrado');
-  } if (erro.code === 'ENOENT') {
-    return 'o arquivo ou diretório não foi encontrado no caminho especificado';
   }
   return 'ocorreu algum erro';
 }
 
 export {
-  manejaErros, trataErro, erroNaExtensao, semLinksEncontrados,
+  manejaErros, trataErro, erroNaExtensao, semLinksEncontrados, arquivoInexistente
 };
+//o arquivo ou diretório não foi encontrado no caminho especificado

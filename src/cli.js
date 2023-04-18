@@ -2,7 +2,7 @@
 
 import chalk from 'chalk';
 import { mdLinks } from './md-links.js';
-import { semLinksEncontrados, erroNaExtensao } from './exibe-erros.js';
+import { semLinksEncontrados, erroNaExtensao, arquivoInexistente } from './exibe-erros.js';
 import calculaStats from './calcula-stats.js';
 
 function imprimeLista(resultado) {
@@ -93,7 +93,7 @@ mdLinks(caminho, options)
         semLinksEncontrados();
         break;
       case 'arquivo-inexistente':
-        console.log('diretório ou arquivo inexistentes')
+        arquivoInexistente(caminho);
         break;
       default:
         console.log(err);
