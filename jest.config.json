@@ -1,4 +1,5 @@
 {
     "testEnvironment": "jest-environment-node",
-    "transform": {}
+    "transform": {},
+    "testMatch": ["/**/*.spec.js"]
 }
