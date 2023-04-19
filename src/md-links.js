@@ -20,6 +20,10 @@ function extrairLinksDoArquivo(caminhoDoArquivo) {
 }
 
 function mdLinks(path, options) {
+
+  if (!path) {
+    return Promise.reject(new Error('Path indefinido ou nulo'));
+  }
   const extensao = path.substr(path.lastIndexOf('.') + 1);
   if (extensao !== 'md') {
     return Promise.reject(new Error('extencao-invalida'));

@@ -45,13 +45,7 @@ function imprimeCalculoStats(links) {
   const stats = calculaStats(links);
   let retorno = '';
 
-  retorno += chalk.hex('#F56327')(
-    '\n',
-    `     ╔═════════════════════════════╗
-      ║ Estatísticas dos Links \ud83d\udcca   ║
-      ╚═════════════════════════════╝`,
-  );
-
+  retorno += chalk.hex('#F56327')('\n',`Estatísticas dos Links \ud83d\udcca`);
   retorno += `\n\n${chalk.hex('#FA956F')('Total de links:')} ${chalk.yellow(stats.total)}`;
   retorno += `\n${chalk.hex('#FA956F')('Links únicos:')} ${chalk.yellow(stats.unique)}`;
 
@@ -100,4 +94,4 @@ mdLinks(caminho, options)
     }
   });
 
-export { imprimeLista }; 
+export { imprimeLista, imprimeListaValidada, imprimeCalculoStats }; 
