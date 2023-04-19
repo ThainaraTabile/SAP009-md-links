@@ -10,10 +10,7 @@ function erroNaExtensao(arquivo) {
 }
 
 function semLinksEncontrados() {
-  console.log(chalk.hex('#FB69C3')(`
-      ╭───────────────────────────────────────────╮
-      │ Não encontramos nenhum link neste arquivo!│
-      ╰───────────────────────────────────────────╯ \n`));
+  console.log(chalk.hex('#FB69C3')(`Não encontramos nenhum link neste arquivo!\n`));
 }
 
 function arquivoInexistente(arquivo) {
