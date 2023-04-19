@@ -39,16 +39,15 @@ describe('mdLinks', () => {
       );
     });
 
-  // describe('quando o arquivo fornecido não possui links', () => {
-  //   it('deve rejeitar a promessa com uma mensagem de erro', () => {
-  //     const path = '../arquivos/texto-sem-link.md';
-  //     const resultado = mdLinks(path);
-  //     const options = {};
-  //     return resultado.catch((erro) => {
-  //       expect(erro.message).toContain('arquivo-sem-link');
-  //     });
-  //   });
-  // });
+//   describe('quando o arquivo fornecido não possui links', () => {
+//     it('deve rejeitar a promessa com uma mensagem de erro', () => {
+//       const path = '../arquivos/texto-sem-link.md';
+//       const resultado = mdLinks(path);
+//       return resultado.catch((erro) => {
+//         expect(erro.message).toContain('arquivo-sem-link');
+//       });
+//     });
+//   });
   
   describe('quando a opção "validate" é passada', () => {
     it('deve retornar um array de objetos com os atributos "href", "text", e "status"', () => {

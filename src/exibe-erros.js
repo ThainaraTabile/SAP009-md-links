@@ -17,9 +17,9 @@ function semLinksEncontrados() {
 }
 
 function arquivoInexistente(arquivo) {
-  console.log(chalk.hex('#FB80A7')(` \n O arquivo/diretório que você está tentando acessar em '${chalk.hex('#FA3473').underline(arquivo)}' não existe. 
-  Por favor, verifique se você digitou corretamente o nome do arquivo/diretório e tente novamente. \n`));
+  console.log(chalk.hex('#FB80A7')(` \n O arquivo/diretório que você está tentando acessar em '${chalk.hex('#FA3473').underline(arquivo)}' não existe.\nPor favor, verifique se você digitou corretamente o nome do arquivo/diretório e tente novamente. \n`));
 }
+
 function manejaErros(erro) {
   if (erro.code === 'ENOTFOUND') {
     return chalk.red('Link não encontrado');
@@ -30,4 +30,3 @@ function manejaErros(erro) {
 export {
   manejaErros, trataErro, erroNaExtensao, semLinksEncontrados, arquivoInexistente
 };
-//o arquivo ou diretório não foi encontrado no caminho especificado

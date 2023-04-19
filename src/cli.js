@@ -15,7 +15,7 @@ function imprimeLista(resultado) {
     chalk.hex('#4BFAF4')(
       '\n',
       `   ╔══════════════════════╗
-    ║ Lista de links \ud83d\udd0d \ud83d\udcc4  ║
+    ║ Lista de links \ud83d\udd0d \ud83d\udcc4 ║
     ╚══════════════════════╝`,
     ),
     '\n\n',
@@ -33,7 +33,7 @@ function imprimeListaValidada(resultado) {
     chalk.hex('#4BFAF4')(
       '\n',
       `   ╔══════════════════════╗
-    ║ Lista de links \ud83d\udd0d \ud83d\udcc4 ║
+    ║ Lista de links \ud83d\udd0d \ud83d\udcc4║
     ╚══════════════════════╝`,
     ),
     '\n\n',
@@ -99,3 +99,5 @@ mdLinks(caminho, options)
         console.log(err);
     }
   });
+
+export { imprimeLista }; 
