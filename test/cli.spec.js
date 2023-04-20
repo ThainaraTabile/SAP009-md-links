@@ -100,25 +100,23 @@ describe('cli', () => {
 
   describe('mdLinks', () => {
     it('deve retornar um array de objetos com link, arquivo e texto', () => {
-      const caminho = './arquivo/texto.md';
+      const caminho = './arquivos/texto-teste.md';
       const options = { validate: false, stats: false };
+
       return mdLinks(caminho, options)
         .then((resultado) => {
           expect(resultado).toEqual([
             {
-              href: 'https://nodejs.org/',
-              text: 'Node.js',
-              file: './test/links-teste.md',
+              href: 'https://gabrieluizramos.com.br/modulos-em-javascript',
+              text: 'Gabriel Luiz Ramos',
+              file: './arquivos/texto-teste.md',
             },
             {
-              href: 'https://jestjs.io/',
-              text: 'Jest',
-              file: './test/links-teste.md',
+              href: 'https://babeljs.io/docs/babel-preset-env',
+              text: 'Babel-preset-env',
+              file: './arquivos/texto-teste.md',
             },
           ]);
-        })
-        .catch((err) => {
-          consoleLog('Erro no teste:', err);
         });
     });
   });

@@ -29,6 +29,7 @@ function mdLinks(path, options) {
     return Promise.reject(new Error('extencao-invalida'));
   }
 
+  console.log(process.env.PWD)
   if(!fs.existsSync(path)) {
     return Promise.reject(new Error('arquivo-inexistente'));
   }
