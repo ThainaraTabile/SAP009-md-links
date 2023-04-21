@@ -9,6 +9,8 @@
   - [2. Funcionalidades](#2-funcionalidades)
   - [3. Instruções de Uso](#3-instruções-de-uso)
   - [4. Considerações técnicas](#4-considerações-técnicas)
+  - [5. Testes Unitários](#5-testes-unitários)
+  - [6. Testes de Usabilidade](#6-testes-de-usabilidade)
 
 ***
 
@@ -31,7 +33,8 @@ As funcionalidades atualmente disponíveis são:
 * `Estatísticas de links`: exibe o número total de links encontrados, total de links únicos e o número de links que estão funcionando corretamente.
 
 ## 3. Instruções de Uso
-(inserir comando)
+Para instalar o módulo, execute o seguinte comando:
+`npm install md-links-lab`
 
 ** Interface com o usuário
 
@@ -66,7 +69,13 @@ A biblioteca segue as práticas modernas de modularização de código em JavaSc
 
 Também foi configurado o `jest.config.json` para a execução de testes automatizados.
 
-##5. Testes Unitários
+## 5. Testes Unitários
 
 Este projeto conta com uma `suíte completa de testes unitários` para garantir a qualidade do código e a confiabilidade da ferramenta de linha de comando. Os testes foram escritos utilizando a biblioteca de testes Jest.
+
 (inserir cobertura dos testes)
+
+## 6. Testes de Usabilidade
+Os resultados do teste de usabilidade foram positivos, indicando que os usuários foram capazes de utilizar a biblioteca `md-links` com sucesso após a instalação do módulo.
+
+

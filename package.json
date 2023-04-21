@@ -25,7 +25,8 @@
   },
   "dependencies": {
     "chalk": "5.2.0",
-    "node-fetch": "^3.3.1"
+    "node-fetch": "^3.3.1",
+    "md-links": "https://github.com/ThainaraTabile/SAP009-md-links"
   },
   "devDependencies": {
     "eslint": "^8.37.0",

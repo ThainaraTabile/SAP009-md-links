@@ -26,10 +26,10 @@ function mdLinks(path, options) {
   }
   const extensao = path.substr(path.lastIndexOf('.') + 1);
   if (extensao !== 'md') {
-    return Promise.reject(new Error('extencao-invalida'));
+    return Promise.reject(new Error('extensao-invalida'));
   }
 
-  console.log(process.env.PWD)
+  //console.log(process.env.PWD)
   if(!fs.existsSync(path)) {
     return Promise.reject(new Error('arquivo-inexistente'));
   }

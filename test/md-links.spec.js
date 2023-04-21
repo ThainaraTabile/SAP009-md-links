@@ -1,7 +1,7 @@
 
 
 import { mdLinks} from '../src/md-links.js'; 
-import fs from 'fs';
+import { jest } from '@jest/globals';
 
 describe('mdLinks', () => {
   describe('quando a extensão do arquivo é inválida', () => {
@@ -11,7 +11,7 @@ describe('mdLinks', () => {
       const resultado = mdLinks(path, options);
 
       return resultado.catch((erro) => {
-        expect(erro.message).toEqual('extencao-invalida');
+        expect(erro.message).toEqual('extensao-invalida');
       });
     });
   });
@@ -38,22 +38,15 @@ describe('mdLinks', () => {
         }
       );
     });
-
-//   describe('quando o arquivo fornecido não possui links', () => {
-//     it('deve rejeitar a promessa com uma mensagem de erro', () => {
-//       const path = '../arquivos/texto-sem-link.md';
-//       const resultado = mdLinks(path);
-//       return resultado.catch((erro) => {
-//         expect(erro.message).toContain('arquivo-sem-link');
-//       });
-//     });
-//   });
   
   describe('quando a opção "validate" é passada', () => {
     it('deve retornar um array de objetos com os atributos "href", "text", e "status"', () => {
-      const path = './arquivos/texto.md';
+      jest.setTimeout(600000);
+
+      const path = './arquivos/texto-teste.md';
       const options = { validate: true };
       return mdLinks(path, options).then((links) => {
+        console.log(links)
         expect(Array.isArray(links)).toBe(true);
         expect(links.length).toBeGreaterThan(0);
         links.forEach((link) => {

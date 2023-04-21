@@ -25,7 +25,7 @@ function imprimeLista(resultado) {
 
 function imprimeListaValidada(resultado) {
   const lista = resultado.map((item) => {
-    const linha = `${item.ok ? chalk.green('\u2714') : chalk.red('\u2718')} ${chalk.black.bgCyan(item.file)} | ${chalk.cyan(item.href)} | ${chalk.cyan(item.text)} | ${item.ok ? chalk.green('ok') : chalk.red('fail')} | ${item.status === undefined ? '' : item.status}`;
+    const linha = `${item.ok ? chalk.green('\u2714') : chalk.red('\u2718')} ${chalk.black.bgCyan(item.file)} | ${chalk.cyan(item.href)} | ${chalk.cyan(item.text)} | ${item.ok ? chalk.green('ok') : chalk.red('fail')} | ${item.status}`;
     return linha;
   }).join('\n\n');
 
@@ -33,7 +33,7 @@ function imprimeListaValidada(resultado) {
     chalk.hex('#4BFAF4')(
       '\n',
       `   ╔══════════════════════╗
-    ║ Lista de links \ud83d\udd0d \ud83d\udcc4║
+    ║ Lista de links \ud83d\udd0d \ud83d\udcc4 ║
     ╚══════════════════════╝`,
     ),
     '\n\n',
@@ -45,7 +45,7 @@ function imprimeCalculoStats(links) {
   const stats = calculaStats(links);
   let retorno = '';
 
-  retorno += chalk.hex('#F56327')('\n',`Estatísticas dos Links \ud83d\udcca`);
+  retorno += chalk.hex('#F56327')('\n', `Estatísticas dos Links \ud83d\udcca`);
   retorno += `\n\n${chalk.hex('#FA956F')('Total de links:')} ${chalk.yellow(stats.total)}`;
   retorno += `\n${chalk.hex('#FA956F')('Links únicos:')} ${chalk.yellow(stats.unique)}`;
 
@@ -56,6 +56,37 @@ function imprimeCalculoStats(links) {
   console.log(retorno);
 }
 
+function executaMdLinks(caminho, options) {
+  return mdLinks(caminho, options)
+    .then((resultado) => {
+      if (options.stats) {
+        imprimeCalculoStats(resultado);
+        return;
+      }
+
+      if (options.validate) {
+        return imprimeListaValidada(resultado);
+      }
+
+      imprimeLista(resultado);
+    })
+    .catch((err) => {
+      switch (err.message) {
+        case 'extensao-invalida':
+          erroNaExtensao(caminho);
+          break;
+        case 'arquivo-sem-link':
+          semLinksEncontrados();
+          break;
+        case 'arquivo-inexistente':
+          arquivoInexistente(caminho);
+          break;
+        default:
+          console.log(err);
+      }
+    });
+}
+
 const caminho = process.argv[2];
 const validate = process.argv.some((argumento) => argumento === '--validate');
 const stats = process.argv.some((argumento) => argumento === '--stats');
@@ -64,34 +95,6 @@ const options = {
   validate,
   stats,
 };
+executaMdLinks(caminho, options)
 
-mdLinks(caminho, options)
-  .then((resultado) => {
-    if (options.stats) {
-      imprimeCalculoStats(resultado);
-      return;
-    }
-
-    if (options.validate) {
-      return imprimeListaValidada(resultado);
-    }
-
-    imprimeLista(resultado);
-  })
-  .catch((err) => {
-    switch (err.message) {
-      case 'extencao-invalida':
-        erroNaExtensao(caminho);
-        break;
-      case 'arquivo-sem-link':
-        semLinksEncontrados();
-        break;
-      case 'arquivo-inexistente':
-        arquivoInexistente(caminho);
-        break;
-      default:
-        console.log(err);
-    }
-  });
-
-export { imprimeLista, imprimeListaValidada, imprimeCalculoStats }; 
+export { imprimeLista, imprimeListaValidada, imprimeCalculoStats, executaMdLinks }; 
