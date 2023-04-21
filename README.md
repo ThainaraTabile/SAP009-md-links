@@ -81,7 +81,7 @@ Também foi configurado o `jest.config.json` para a execução de testes automat
 
 Este projeto conta com uma `suíte completa de testes unitários` para garantir a qualidade do código e a confiabilidade da ferramenta de linha de comando. Os testes foram escritos utilizando a biblioteca de testes Jest.
 
-A maioria dos testes unitários cobriram 100% dos statements, functions e lines e branches.
+A maioria dos testes unitários cobriram 100% dos statements, functions lines e branches.
 
 <img width="586" alt="Captura de Tela 2023-04-21 às 09 47 39" src="https://user-images.githubusercontent.com/122550758/233639902-cfb04b38-edff-4a96-9425-08f416c02664.png">
 
