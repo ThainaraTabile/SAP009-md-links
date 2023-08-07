@@ -18,7 +18,7 @@
 
 Este projeto é composto por uma ferramenta de linha de comando `(CLI)`, a qual permite que o usuário execute a biblioteca diretamente do terminal, através de um módulo do Node.js que analisa os arquivos em formato `Markdown`.
 
-A `CLI` revela os links encontrados, indicando a rota do arquivo onde foi encontrado o link, a URL encontrada e o texto que aparece dentro de um link. Também pode validar os links e fornecer estatísticas sobre os mesmos.
+A `CLI` revela os links encontrados, indicando a rota do arquivo onde foi encontrado o link, a URL encontrada e o texto âncora. Também é possível validar os links e fornecer estatísticas sobre os mesmos.
 
 A aplicação foi desenvolvida em três sprints, seguindo um planejamento definido previamente através de um fluxograma e detalhamento das tarefas no Trello.
 
